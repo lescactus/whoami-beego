@@ -1,0 +1,42 @@
+<div class="table-responsive">
+    <table class="table table-hover table-striped table-bordered">
+        <tbody>
+            <tr>
+                <td><a href="/">{{.Browser.Host}}/</a></td>
+                <td>This page</td>
+            </tr>
+            <tr>
+                <td><a href="/index">{{.Browser.Host}}/index/</a></td>
+                <td>Also this page</td>
+            </tr>
+            <tr>
+                <td><a href="/ip">{{.Browser.Host}}/ip/</a></td>
+                <td>{{ .Browser.IP }}</td>
+            </tr>
+            <tr>
+                <td><a href="/port">{{.Browser.Host}}/port/</a></td>
+                <td>{{ .Browser.Port }}</td>
+            </tr>
+            <tr>
+                <td><a href="/lang">{{.Browser.Host}}/lang/</a></td>
+                <td>{{ .Browser.Lang }}</td>
+            </tr>
+            <tr>
+                <td><a href="/ua">{{.Browser.Host}}/ua/</a></td>
+                <td>{{ .Browser.UserAgent }}</td>
+            </tr>
+            <tr>
+                <td><a href="/raw/go">{{.Browser.Host}}/raw/go</a></td>
+                <td>{{ .Browser.Headers }}</td>
+            </tr>
+            <tr>
+                <td><a href="/raw/json">{{.Browser.Host}}/raw/json</a></td>
+                <td>{{ .Browser.JSON }}</td>
+            </tr>
+            <tr>
+                <td><a href="/raw/yaml">{{.Browser.Host}}/raw/yaml</a></td>
+                <td>{{ .Browser.YAML }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

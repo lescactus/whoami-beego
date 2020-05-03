@@ -1,0 +1,76 @@
+<div class="table-responsive">
+    <table class="table table-hover table-striped table-bordered">
+        <tbody>
+            <tr>
+                <td>Your IP</td>
+                <td>{{ .Browser.IP }}</td>
+            </tr>
+            <tr>
+                <td>Your port</td>
+                <td>{{ .Browser.Port }}</td>
+            </tr>
+            {{ if .Browser.Location.CountryCode }}
+            <tr>
+                <td>Country Code</td>
+                <td>{{ .Browser.Location.CountryCode }}</td>
+            </tr>
+            {{ end }} {{ if .Browser.Location.CountryName }}
+            <tr>
+                <td>Country Name</td>
+                <td>{{ .Browser.Location.CountryName }}</td>
+            </tr>
+            {{ end }} {{ if .Browser.Location.RegionCode }}
+            <tr>
+                <td>Region Code</td>
+                <td>{{ .Browser.Location.RegionCode }}</td>
+            </tr>
+            {{ end }} {{ if .Browser.Location.RegionName }}
+            <tr>
+                <td>Region Name</td>
+                <td>{{ .Browser.Location.RegionName }}</td>
+            </tr>
+            {{ end }} {{ if .Browser.Location.City }}
+            <tr>
+                <td>City</td>
+                <td>{{ .Browser.Location.City }}</td>
+            </tr>
+            {{ end }} {{ if .Browser.Location.ZipCode }}
+            <tr>
+                <td>Zip Code</td>
+                <td>{{ .Browser.Location.ZipCode }}</td>
+            </tr>
+            {{ end }} {{ if .Browser.Location.Timezone }}
+            <tr>
+                <td>Timezone</td>
+                <td>{{ .Browser.Location.Timezone }}</td>
+            </tr>
+            {{ end }} {{ if .Browser.Location.Latitude }}
+            <tr>
+                <td>Latitude</td>
+                <td>{{ .Browser.Location.Latitude }}</td>
+            </tr>
+            {{ end }} {{ if .Browser.Location.Longitude }}
+            <tr>
+                <td>Longitude</td>
+                <td>{{ .Browser.Location.Longitude }}</td>
+            </tr>
+            {{ end }} {{ if .Browser.Location.MetroCode }}
+            <tr>
+                <td>Metro Code</td>
+                <td>{{ .Browser.Location.MetroCode }}</td>
+            </tr>
+            {{ end }}
+
+            <tr class="separator text-center">
+                <td>Header</td>
+                <td>Value</td>
+            </tr>
+            {{ range $key, $value := .Browser.Headers }}
+            <tr>
+                <td>{{ $key }}</td>
+                <td>{{ range $element := $value }} {{$element}} {{end}}</td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+</div>
