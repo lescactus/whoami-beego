@@ -10,11 +10,11 @@ steps:
   args:
   - 'run'
   - 'deploy'
-  - '[SERVICE_NAME]'
+  - 'whoami-beego'
   - '--image'
   - 'eu.gcr.io/whoami-go-276012/whoami-beego:$COMMIT_SHA'
   - '--region'
-  - '[REGION]'
+  - 'europe-west1'
   - '--platform'
   - 'managed'
 images:
