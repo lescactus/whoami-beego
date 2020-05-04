@@ -1,0 +1,21 @@
+steps:
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'eu.gcr.io/whoami-go-276012/whoami-beego:$COMMIT_SHA', '.']
+# Push the image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'eu.gcr.io/whoami-go-276012/whoami-beego:$COMMIT_SHA']
+# Deploy image to Cloud Run
+- name: 'gcr.io/cloud-builders/gcloud'
+  args:
+  - 'run'
+  - 'deploy'
+  - '[SERVICE_NAME]'
+  - '--image'
+  - 'eu.gcr.io/whoami-go-276012/whoami-beego:$COMMIT_SHA'
+  - '--region'
+  - '[REGION]'
+  - '--platform'
+  - 'managed'
+images:
+- eu.gcr.io/whoami-go-276012/whoami-beego
