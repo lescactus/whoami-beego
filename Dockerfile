@@ -1,28 +1,28 @@
-FROM library/golang as builder
-
-RUN go get "github.com/astaxie/beego" "gopkg.in/yaml.v2"
-
-# Recompile the standard library without CGO
-RUN CGO_ENABLED=0 go install -a std
-
-ENV APP_DIR $GOPATH/src/github.com/lescactus/whoami-beego
-RUN mkdir -p $APP_DIR
-
-# Set the entrypoint
-ENTRYPOINT (cd $APP_DIR && ./whoami-beego)
-ADD . $APP_DIR
-
-# Compile the binary and statically link
-RUN cd $APP_DIR && CGO_ENABLED=0 go build -ldflags '-d -w -s' -o main
-
-FROM alpine
+FROM golang:1.17-alpine as builder
 
 WORKDIR /app
 
-COPY --from=builder /go/src/github.com/lescactus/whoami-beego/main /app
-COPY --from=builder /go/src/github.com/lescactus/whoami-beego/views /app/views
-COPY --from=builder /go/src/github.com/lescactus/whoami-beego/static /app/static
+COPY go.* ./
+
+RUN go mod download
+
+COPY . .
+
+RUN CGO_ENABLED=0 go build -ldflags '-d -w -s' -o main
+
+FROM alpine:3
+
+WORKDIR /app
+
+RUN chown -R 65534:65534 /app
+
+COPY --from=builder --chown=65534:65534 /app/main /app
+COPY --chown=65534:65534 ./views /app/views
+COPY --chown=65534:65534 ./static /app/static
 
 EXPOSE 8080
+
+# nobody
+USER 65534
 
 CMD ["./main"]

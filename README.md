@@ -11,24 +11,15 @@ Use it now
 ----------
 
 ```sh
-# Install requirements
-$ go get "github.com/astaxie/beego" "github.com/ghodss/yaml"
+# Install via go get and run it
+$ go get "github.com/lescactus/whoami-beego"
+$ ~/go/bin/whoami-beego
+...
 
-# Run it:
-$ bee run
-______
-| ___ \
-| |_/ /  ___   ___
-| ___ \ / _ \ / _ \
-| |_/ /|  __/|  __/
-\____/  \___| \___| v1.10.0
-2020/05/03 18:50:29 INFO     ▶ 0001 Using 'whoami-beego' as 'appname'
-2020/05/03 18:50:29 INFO     ▶ 0002 Initializing watcher...
-github.com/lescactus/whoami-beego/routers
-2020/05/03 18:50:31 SUCCESS  ▶ 0003 Built Successfully!
-2020/05/03 18:50:31 INFO     ▶ 0004 Restarting 'whoami-beego'...
-2020/05/03 18:50:31 SUCCESS  ▶ 0005 './whoami-beego' is running...
-2020/05/03 18:50:31.385 [I] [asm_amd64.s:1373]  http server Running on http://:8080
+# Git clone and build:
+$ git clone https://github.com/lescactus/whoami-beego.git
+$ go run main.go
+...
 ```
 
 Now point your browser at http://127.0.0.1:8080
@@ -39,7 +30,6 @@ Now point your browser at http://127.0.0.1:8080
 By default, the container will expose port 8080, so change this within the ``Dockerfile`` if necessary. When ready, simply use the ``Dockerfile`` to build the image.
 
 ```sh
-cd app
 docker build -t whoami .
 ```
 This will create the Docker image.
