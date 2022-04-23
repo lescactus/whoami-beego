@@ -1,15 +1,14 @@
 Who am I ?
 ==================
 
-A Go web app that display sample information from the visitor (IP, location, browser HTTP headers ...): **[whoami](https://whoami-beego.alexasr.tk/)**.
-It thr first attempt of rewriting of one of my previous mini project **[whoami-go](https://github.com/lescactus/whoami-go)** with [beego](https://beego.me/)
+A Go web app that display sample information from the visitor (IP, location, browser HTTP headers ...): **[whoami](https://whoami-beego.alexasr.fr/)**.
+It the first attempt of rewriting of one of my previous mini project **[whoami-go](https://github.com/lescactus/whoami-go)** with [beego](https://beego.vip/)
 
 This app is strongly inspired by **[ifconfig.me](http://ifconfig.me)**
 
 
 Use it now
 ----------
-::
 
 ```sh
 # Install requirements
